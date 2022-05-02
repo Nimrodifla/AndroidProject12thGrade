@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DriverPanelActivity">
+
+    <TextView
+        android:id="@+id/paneltitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:gravity="center_horizontal"
+        android:text="Ride"
+        android:textSize="34sp" />
+
+    <TextView
+        android:id="@+id/srcTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:fontFamily="@font/audiowide"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/dstTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:fontFamily="@font/audiowide"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/dateTimeTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:fontFamily="@font/audiowide"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/usersInDriveTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:fontFamily="@font/audiowide"
+        android:text="TextView"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/deleteAndExit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:onClick="onClick"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="Exit and Delete" />
+</LinearLayout>

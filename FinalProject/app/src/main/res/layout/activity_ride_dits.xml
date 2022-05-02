@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/usernameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="user USER drives"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/courseLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="from A to B"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/timeLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="at 69:69" />
+
+    <TextView
+        android:id="@+id/seatsLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="with X free seats" />
+
+    <TextView
+        android:id="@+id/usersLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="users in ride:" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:onClick="onClick"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="Join Ride" />
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:onClick="onClick"
+        android:shadowColor="@color/black"
+        android:shadowDx="10"
+        android:shadowDy="10"
+        android:shadowRadius="1"
+        android:text="back" />
+
+</LinearLayout>
