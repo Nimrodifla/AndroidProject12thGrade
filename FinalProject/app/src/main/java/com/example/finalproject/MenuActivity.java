@@ -31,6 +31,7 @@ public class MenuActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.about_opt)
         {
+            // about the app dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
             builder.setTitle("About The App");
             builder.setMessage("Pick Me App is a fun & easy way for people to connect together & find rides. The app saves you gas, money & help the environment!");
@@ -44,6 +45,7 @@ public class MenuActivity extends AppCompatActivity {
         }
         else if (item.getItemId() == R.id.about_dev_opt)
         {
+            // about the developer dialog
             AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
             builder.setTitle("About The Developer");
             builder.setMessage("Hey! What's up? Im Nimrod.\nI love making apps. I live in Rakefet, a small Yeshuv in Mizgav. Enjoy The App!");

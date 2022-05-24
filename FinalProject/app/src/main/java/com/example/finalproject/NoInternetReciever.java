@@ -15,6 +15,7 @@ public class NoInternetReciever extends BroadcastReceiver {
         NetworkInfo wifi = connMgr.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
         NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
 
+        // check if device is connected to the internet
         boolean isConnected = wifi != null && wifi.isConnectedOrConnecting() ||
                 mobile != null && mobile.isConnectedOrConnecting();
         if (isConnected) {

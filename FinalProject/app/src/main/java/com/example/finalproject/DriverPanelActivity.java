@@ -56,6 +56,7 @@ public class DriverPanelActivity extends MenuActivity {
         database = FirebaseDatabase.getInstance();
         myRef = database.getReference();
 
+        // get data from prev activity
         username = (String)getIntent().getExtras().get("username");
         driverName = (String)getIntent().getExtras().get("driver");
         
@@ -65,6 +66,7 @@ public class DriverPanelActivity extends MenuActivity {
             isDriver = true;
         }
 
+        // set titles to passenger / driver
         if (!isDriver) {
             title.setText("Driver: " + driverName);
             exitBtn.setText("Leave Ride");
@@ -73,7 +75,7 @@ public class DriverPanelActivity extends MenuActivity {
             title.setText("Your Drive");
         }
 
-        // automaticly update dits when drive is changing on DB
+        // automatically update details when drive is changing on firebase
         Query q = myRef.child("rides").child(driverName).orderByKey();
         q.addValueEventListener(new ValueEventListener() {
             @Override
@@ -106,6 +108,7 @@ public class DriverPanelActivity extends MenuActivity {
         }
         else
         {
+            // update ride details on screen
             srcText.setText("Ride from: " + ride.getSrc());
             dstText.setText("Ride to: " + ride.getDst());
             dateTimeText.setText("At: " + Helper.DateToString(ride.getTravelDate()));
@@ -142,7 +145,7 @@ public class DriverPanelActivity extends MenuActivity {
             }
             else
             {
-                // leave ride on db
+                // leave ride on firebase
                 Query q = myRef.child("rides").child(driverName).orderByKey();
                 q.addValueEventListener(new ValueEventListener() {
                     @Override

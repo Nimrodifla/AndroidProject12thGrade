@@ -48,6 +48,7 @@ public class CreateRideActivity extends MenuActivity {
         dst = findViewById(R.id.dst);
         seats = findViewById(R.id.editTextNumber);
 
+        // get username from the prev screen
         username = (String)getIntent().getExtras().get("username");
     }
 
@@ -63,11 +64,12 @@ public class CreateRideActivity extends MenuActivity {
         }
         else if (v == cancelBtn)
         {
+            // close screen
             finish();
         }
         else if (v == dateBtn)
         {
-
+            // open date dialog
             final View dialogView = View.inflate(CreateRideActivity.this, R.layout.date_time_layout, null);
             final AlertDialog alertDialog = new AlertDialog.Builder(CreateRideActivity.this).create();
 
@@ -89,6 +91,7 @@ public class CreateRideActivity extends MenuActivity {
         }
         else if (v == timeBtn)
         {
+            // open time dialog
             final View dialogView = View.inflate(CreateRideActivity.this, R.layout.time_layout, null);
             final AlertDialog alertDialog = new AlertDialog.Builder(CreateRideActivity.this).create();
 
@@ -112,7 +115,9 @@ public class CreateRideActivity extends MenuActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference();
 
+        // create drive in firebase
         myRef.child("rides").child(ride.getDriverName()).setValue(ride);
+        // add all users to "users" child to the drive in firebase
         for (int i = 0; i < ride.getUsers().size(); i++)
         {
             myRef.child("rides").child(ride.getDriverName()).child("users").child(String.valueOf(i)).setValue(ride.getUsers().get(i));
@@ -125,7 +130,7 @@ public class CreateRideActivity extends MenuActivity {
         b.putSerializable("driver", username);
         intent.putExtras(b);
         startActivity(intent);
-
+        // close activity when resumed
         finish();
     }
 

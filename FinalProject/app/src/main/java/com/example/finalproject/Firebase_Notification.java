@@ -78,7 +78,6 @@ public class Firebase_Notification extends Service {
                                     // ---- SEND NOTIFICATION HERE! ----
                                     DriverPanelActivity.numOfUsers = currentLen; // update prev
                                     manager.notify(0,builder.build());
-                                    //Toast.makeText(getBaseContext(), "Equaled! to: " + currentLen, Toast.LENGTH_LONG).show();
                                 }
                             }
                         }
@@ -90,7 +89,7 @@ public class Firebase_Notification extends Service {
                 }
                 catch (Exception error)
                 {
-                    //Toast.makeText(getBaseContext(), "Catch", Toast.LENGTH_SHORT).show();
+                    // error happened...
                 }
             }
 

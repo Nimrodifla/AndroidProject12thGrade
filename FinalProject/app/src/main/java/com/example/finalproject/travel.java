@@ -29,6 +29,7 @@ public class travel implements Serializable {
         users = new ArrayList<>();
     }
 
+    // getter & setters
     public String getDriverName() {
         return driverName;
     }
@@ -76,6 +77,7 @@ public class travel implements Serializable {
 
     public void setUsers(ArrayList<String> users) { this.users = users; }
 
+    // adds a user to the array
     public boolean addUser(String username)
     {
         if (this.seatsAvailable <= 0)
@@ -89,6 +91,7 @@ public class travel implements Serializable {
         }
     }
 
+    // removes a user from the array
     public boolean removeUser(String username)
     {
         boolean check = this.users.remove(username);

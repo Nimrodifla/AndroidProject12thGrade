@@ -45,8 +45,6 @@ public class StartActivity extends MenuActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //IntentFilter filter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
-        //registerReceiver(reciever, filter);
 
         signInBtn = findViewById(R.id.signin);
         registerBtn = findViewById(R.id.register);
@@ -71,7 +69,6 @@ public class StartActivity extends MenuActivity {
 
         if (timesTheScreenWasOn != 1) {
             ObjectAnimator animator = ObjectAnimator.ofFloat(bigTitle, "translationY", 0f);
-            //animator.setInterpolator(new AccelerateInterpolator());
             animator.setDuration(0);
             animator.start();
         }
@@ -84,6 +81,7 @@ public class StartActivity extends MenuActivity {
         q.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                // check if username exists already
                 for(DataSnapshot dst : snapshot.getChildren())
                 {
                     User u = dst.getValue(User.class);
@@ -92,16 +90,17 @@ public class StartActivity extends MenuActivity {
                         exists = true;
                     }
                 }
-                // check user doesnt exist
+                // username doesn't exist
                 if (exists == false) {
-                    // Write a message to the database
+                    // create new user on firebase
                     myRef.child("users").child(username).child("password").setValue(password);
                     myRef.child("users").child(username).child("username").setValue(username);
-
+                    // log new user in
                     SignInUser(u, p);
                 }
                 else
                 {
+                    // show error msg to user
                     Toast.makeText(StartActivity.this, "Couldn't register...", Toast.LENGTH_SHORT).show();
                 }
 
@@ -114,6 +113,7 @@ public class StartActivity extends MenuActivity {
         });
     }
 
+    // signs user in with username and password
     public void SignInUser(String username, String password) {
         Query q = myRef.child("users").orderByKey();
         exists = false;
@@ -147,6 +147,7 @@ public class StartActivity extends MenuActivity {
 
                             if (correctPass)
                             {
+                                // user credentials are correct. show log in animation & then log in
                                 int time = 1000;
                                 ObjectAnimator animator = ObjectAnimator.ofFloat(bigTitle, "translationY", -500f);
                                 animator.setInterpolator(new AccelerateInterpolator());
@@ -166,6 +167,7 @@ public class StartActivity extends MenuActivity {
                             }
                             else
                             {
+                                // show error msg
                                 Toast.makeText(StartActivity.this, "Sign in failed...", Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -177,6 +179,7 @@ public class StartActivity extends MenuActivity {
                     });
                 }
                 else {
+                    // show error msg
                     Toast.makeText(StartActivity.this, "Sign in failed...", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -201,6 +204,7 @@ public class StartActivity extends MenuActivity {
 
     public void OpenMainScreen()
     {
+        // opens MainActivity
         Intent intent = new Intent(StartActivity.this, MainActivity.class);
         Bundle b = new Bundle();
         b.putSerializable("username", u);

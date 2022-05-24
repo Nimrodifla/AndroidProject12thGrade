@@ -13,6 +13,7 @@ public class User {
         this.username = u;
     }
 
+    // setters & getters
     public void setPassword(String password) {
         this.password = password;
     }

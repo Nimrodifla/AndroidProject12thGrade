@@ -55,6 +55,7 @@ public class MainActivity extends MenuActivity {
         signOutBtn = findViewById(R.id.signOutBtn);
         createBtn = findViewById(R.id.createBtn);
 
+        // get data from prev activity
         username = (String) getIntent().getExtras().get("username");
 
         database = FirebaseDatabase.getInstance();
@@ -65,11 +66,13 @@ public class MainActivity extends MenuActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 travel t = travelsList.get(i);
+                // make sure arr is not null, but empty
                 if (t.getUsers() == null)
                 {
                     t.setUsers(new ArrayList<String>());
                 }
 
+                // open rideDetails activity of the selected drive
                 Intent intent = new Intent(MainActivity.this, RideDitsActivity.class);
                 Bundle b = new Bundle();
                 b.putSerializable("travel", t);
@@ -80,7 +83,7 @@ public class MainActivity extends MenuActivity {
         });
 
         // check if the user is currently owning a ride
-        // if he is - open driverPanelActivity
+        // if it is - open driverPanelActivity
         // or, if the user is In a drive (not as a driver)
         Query q2 = myRef.child("rides").orderByKey();
         q2.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -174,9 +177,11 @@ public class MainActivity extends MenuActivity {
         {
             if (searchBtnClearSearch) // btn is in clear mode
             {
+                // clear search
                 fromSearch.setText("");
                 toSearch.setText("");
 
+                // update listView to show all
                 TravelAdapter travelAdapter = new TravelAdapter(this,0,0,travelsList);
                 lv_travels.setAdapter(travelAdapter);
 
@@ -242,10 +247,12 @@ public class MainActivity extends MenuActivity {
         }
         else if (v == signOutBtn)
         {
+            // close screen
             finish();
         }
         else if (v == createBtn)
         {
+            // go to createDrive activity
             Intent intent = new Intent(MainActivity.this, CreateRideActivity.class);
             Bundle b = new Bundle();
             b.putSerializable("username", username);

@@ -3,6 +3,7 @@ package com.example.finalproject;
 import java.util.Date;
 
 public class Helper {
+    // adds '0' to the start of a string to achieve the desired length of a string
     public static String padder(String str, int targetLength)
     {
         String res = "";
@@ -13,6 +14,7 @@ public class Helper {
         return  res;
     }
 
+    // parse date to a string
     public static String DateToString(Date d)
     {
         String res = "";

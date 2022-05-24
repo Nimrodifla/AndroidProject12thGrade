@@ -54,6 +54,7 @@ public class RideDitsActivity extends MenuActivity {
         joinBtn = findViewById(R.id.button);
         backBtn = findViewById(R.id.backBtn);
 
+        // get data from prev activity
         ride = (travel)getIntent().getExtras().get("travel");
         username = (String)getIntent().getExtras().get("username");
 
@@ -62,11 +63,13 @@ public class RideDitsActivity extends MenuActivity {
 
         if (ride == null)
         {
+            // error happened, data didn't transfer properly. close the activity
             Toast.makeText(RideDitsActivity.this, "ERROR", Toast.LENGTH_LONG).show();
             finish();
         }
         else
         {
+            // update info on screen
             driver.setText("User " + ride.getDriverName() + " Drives");
             course.setText("From " + ride.getSrc() + " to " + ride.getDst());
             time.setText("At: " + ride.getTravelDate().toString());
@@ -91,7 +94,7 @@ public class RideDitsActivity extends MenuActivity {
     {
         if (v == joinBtn)
         {
-            // join ride on db
+            // join ride on firebase
             Query q = myRef.child("rides").child(ride.getDriverName()).orderByKey();
             q.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -131,6 +134,7 @@ public class RideDitsActivity extends MenuActivity {
         }
         else if (v == backBtn)
         {
+            // close actvity
             finish();
         }
     }
